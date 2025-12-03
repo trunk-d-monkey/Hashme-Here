@@ -1,0 +1,76 @@
+Hashme HERE and Hashit
+
+Files: hashme.py, hashme.bat, hashit.py, hashit.bat
+
+========================================================================
+============ INSTRUCTIONS ==============================================
+========================================================================
+This uses Python's native hash library to hash the files in the folder
+it is started from and all files in subfolders recursively.  It will 
+store the hashes in a TSV file in the folder it is run in that can be
+opened and the hashes copied and pasted elsewhere.  It will remove the 
+full path so you only have the file names and subfolder paths.  
+
+INSTRUCTIONS:
+Make a folder and add it to your system path (suggested "C:\Scripts"
+where you can add additional scripts OR if you already have one it can
+go there.  Place this file and the corresponding .bat file in that folder.
+If it's some other folder, you'll have to edit the .bat file accordingly.
+For linux, the files can be places usually in the user folder ~/.local/bin
+to let it be in the path for the user. 
+
+You can then run this in any folder by opening a command prompt
+(Type "cmd" in the path bar and hit ENTER), then typing "hashme".
+The default will be SHA256 to TXT format but if you want MD5 or SHA1 
+just enter it as an argument (EX: hashme md5, hashme md5 tsv). The order
+of the arguments does not matter.  
+
+Valid hash formats are SHA256, MD5, SHA1
+Valid output formats are txt, tsv, csv
+
+Defaults are SHA256 and TXT but you can add the arguments directly to 
+your starting batch or shell script to override these not not have to
+enter them each time as arguments. 
+
+Example Batch File:
+   @echo off
+   python c:\Scripts\hashme.py %*
+
+Added override to default to md5 hash and tsv output format
+   @echo off
+   python c:\Scripts\hashme.py md5 tsv %*
+
+The hasher will take the LAST hash and format given.
+EX: hashme sha256 txt md5 will give the md5 hashes in txt format.
+
+WINDOWS ONLY------------------------------------------------------------
+For Windows ONLY with the automated reports program with the same author, 
+the argument "hr" for Hash Reports can be used.  It will hash all .pdf
+files in the same folder EXCEPT the FPR.pdf file.  It will display the 
+output in a way it can be copied to the Windows clipboard AND displayed
+in the output window in case you are working and use the clipboard after
+it finishes but before entering it in the police report.  
+
+You can use "cb" for clip board to hash ONE specified file and then
+display the output on screen AND copy the file name and hash to the 
+Windows clipboard. 
+
+    EX: hashme myfile.bin md5 cb
+------------------------------------------------------------------------
+To add to the system path in Windows
+
+Open the settings and search "variables".  Two items will come up. 
+choose "Edit the system environment variables".  
+
+Click the bottom button "Environment Variables" then use the BOTTOM
+windows titled "System variables".
+
+Select the "Path" and click "Edit". Now add the folder your scripts 
+are in.  C:\scripts is suggested so you don't have to change the 
+.bat file.
+
+If it doesn't work, you may have to restart the machine for it to take
+effect but it usually works without the restart. 
+
+Author: Aaron Roberts
+
